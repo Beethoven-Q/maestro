@@ -1,0 +1,128 @@
+robot_cfg:
+  kinematics:
+    use_usd_kinematics: False
+    urdf_path: "robot/franka_panda_robotiq_85/panda_robotiq_85.urdf"
+    asset_root_path: "robot/franka_panda_robotiq_85"
+    base_link: "panda_link0"
+    ee_link: "panda_link8"
+    collision_link_names:
+      [
+        "panda_link0",
+        "panda_link1",
+        "panda_link2",
+        "panda_link3",
+        "panda_link4",
+        "panda_link5",
+        "panda_link6",
+        "panda_link7",
+        "robotiq_2f_85_base",
+        "robotiq_2f_85_right_driver",
+        "robotiq_2f_85_right_follower",
+        "robotiq_2f_85_left_follower",
+        "robotiq_2f_85_right_coupler",
+        "robotiq_2f_85_right_pad",
+        "robotiq_2f_85_right_spring_link",
+        "robotiq_2f_85_left_driver",
+        "robotiq_2f_85_left_follower",
+        "robotiq_2f_85_left_coupler",
+        "robotiq_2f_85_left_pad",
+        "robotiq_2f_85_left_spring_link",
+        "attached_object",
+      ]
+
+    collision_spheres: "spheres/franka_robotiq_85.yml"
+    extra_collision_spheres: {"attached_object": 4}
+    use_global_cumul: True
+    self_collision_ignore:
+      {
+        "panda_link0": ["panda_link1", "panda_link2"],
+        "panda_link1": ["panda_link2", "panda_link3", "panda_link4"],
+        "panda_link2": ["panda_link3", "panda_link4"],
+        "panda_link3": ["panda_link4", "panda_link6"],
+        "panda_link4": ["panda_link5", "panda_link6", "panda_link7", "panda_link8"],
+        "panda_link5": ["panda_link6", "panda_link7", "robotiq_2f_85_base", "robotiq_2f_85_right_driver", "robotiq_2f_85_left_driver", 
+                       "attached_object", "robotiq_2f_85_right_follower", "robotiq_2f_85_left_follower", "robotiq_2f_85_right_coupler", 
+                       "robotiq_2f_85_left_coupler", "robotiq_2f_85_right_pad", "robotiq_2f_85_left_pad", "robotiq_2f_85_right_spring_link", 
+                       "robotiq_2f_85_left_spring_link"],
+        "panda_link6": ["panda_link7", "robotiq_2f_85_base", "attached_object", "robotiq_2f_85_right_driver", "robotiq_2f_85_left_driver", 
+                       "robotiq_2f_85_right_follower", "robotiq_2f_85_left_follower", "robotiq_2f_85_right_coupler", "robotiq_2f_85_left_coupler", 
+                       "robotiq_2f_85_right_pad", "robotiq_2f_85_left_pad", "robotiq_2f_85_right_spring_link", "robotiq_2f_85_left_spring_link"],
+        "panda_link7": ["robotiq_2f_85_base", "attached_object", "robotiq_2f_85_right_driver", "robotiq_2f_85_left_driver", "robotiq_2f_85_right_follower", "robotiq_2f_85_left_follower", "robotiq_2f_85_left_coupler", "robotiq_2f_85_right_coupler", "robotiq_2f_85_left_pad", "robotiq_2f_85_right_pad", "robotiq_2f_85_left_spring_link", "robotiq_2f_85_right_spring_link"],
+        "robotiq_2f_85_base": ["robotiq_2f_85_right_driver", "robotiq_2f_85_left_driver", "robotiq_2f_85_right_follower", "robotiq_2f_85_left_follower", "robotiq_2f_85_left_coupler", "robotiq_2f_85_right_coupler", "robotiq_2f_85_left_pad", "robotiq_2f_85_right_pad", "robotiq_2f_85_left_spring_link", "robotiq_2f_85_right_spring_link", "attached_object"],
+        "robotiq_2f_85_right_driver": ["robotiq_2f_85_left_driver", "robotiq_2f_85_right_follower", "robotiq_2f_85_left_follower", "robotiq_2f_85_left_coupler", "robotiq_2f_85_right_coupler", "robotiq_2f_85_left_pad", "robotiq_2f_85_right_pad", "robotiq_2f_85_left_spring_link", "robotiq_2f_85_right_spring_link", "attached_object"],
+        "robotiq_2f_85_left_driver": ["robotiq_2f_85_right_follower", "robotiq_2f_85_left_follower", "robotiq_2f_85_left_coupler", "robotiq_2f_85_right_coupler", "robotiq_2f_85_left_pad", "robotiq_2f_85_right_pad", "robotiq_2f_85_left_spring_link", "robotiq_2f_85_right_spring_link", "attached_object"],
+        "robotiq_2f_85_right_follower": ["robotiq_2f_85_left_follower", "robotiq_2f_85_left_coupler", "robotiq_2f_85_right_coupler", "robotiq_2f_85_left_pad", "robotiq_2f_85_right_pad", "robotiq_2f_85_left_spring_link", "robotiq_2f_85_right_spring_link", "attached_object"],
+        "robotiq_2f_85_left_follower": ["robotiq_2f_85_left_coupler", "robotiq_2f_85_right_coupler", "robotiq_2f_85_left_pad", "robotiq_2f_85_right_pad", "robotiq_2f_85_left_spring_link", "robotiq_2f_85_right_spring_link", "attached_object"],
+        "robotiq_2f_85_right_coupler": ["robotiq_2f_85_left_coupler", "robotiq_2f_85_left_pad", "robotiq_2f_85_right_pad", "robotiq_2f_85_left_spring_link", "robotiq_2f_85_right_spring_link", "attached_object"],
+        "robotiq_2f_85_left_coupler": ["robotiq_2f_85_left_pad", "robotiq_2f_85_right_pad", "robotiq_2f_85_left_spring_link", "robotiq_2f_85_right_spring_link", "attached_object"],
+        "robotiq_2f_85_right_pad": ["robotiq_2f_85_left_pad", "robotiq_2f_85_left_spring_link", "robotiq_2f_85_right_spring_link", "attached_object"],
+        "robotiq_2f_85_left_pad": ["robotiq_2f_85_left_spring_link", "robotiq _2f_85_right_spring_link", "attached_object"],
+        "robotiq_2f_85_right_spring_link": ["robotiq_2f_85_left_spring_link", "attached_object"],
+        "robotiq_2f_85_left_spring_link": ["attached_object"],
+      }
+
+    self_collision_buffer:
+      {
+        "panda_link0": 0.1,
+        "panda_link1": 0.05,
+        "panda_link2": 0.0,
+        "panda_link3": 0.0,
+        "panda_link4": 0.0,
+        "panda_link5": 0.0,
+        "panda_link6": 0.0,
+        "panda_link7": 0.0,
+        "robotiq_2f_85_base": 0.02,
+        "robotiq_2f_85_right_driver": 0.01,
+        "robotiq_2f_85_left_driver": 0.01,
+        "robotiq_2f_85_right_follower": 0.01,
+        "robotiq_2f_85_left_follower": 0.01,
+        "attached_object": 0.0,
+      }
+
+    mesh_link_names:
+      [
+        "panda_link0",
+        "panda_link1",
+        "panda_link2",
+        "panda_link3",
+        "panda_link4",
+        "panda_link5",
+        "panda_link6",
+        "panda_link7",
+        "robotiq_2f_85_base",
+        "robotiq_2f_85_right_driver",
+        "robotiq_2f_85_left_driver",
+        "robotiq_2f_85_right_follower",
+        "robotiq_2f_85_left_follower",
+      ]
+
+    lock_joints: {robotiq_2f_85_right_driver_joint: 0.0}
+
+    extra_links:
+      {
+        "attached_object":
+          {
+            "parent_link_name": "robotiq_2f_85_base",
+            "link_name": "attached_object",
+            "fixed_transform": [0,0,0,1,0,0,0],
+            "joint_type": "FIXED",
+            "joint_name": "attach_joint"
+          }
+      }
+
+    cspace:
+      joint_names:
+        [
+          "panda_joint1",
+          "panda_joint2",
+          "panda_joint3",
+          "panda_joint4",
+          "panda_joint5",
+          "panda_joint6",
+          "panda_joint7"
+        ]
+      retract_config: [0.0, -1.3, 0.0, -2.5, 0.0, 1.0, 0.]
+      null_space_weight: [1,1,1,1,1,1,1]
+      cspace_distance_weight: [1,1,1,1,1,1,1]
+      max_acceleration: 15.0
+      max_jerk: 500.0

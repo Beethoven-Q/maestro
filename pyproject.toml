@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "maestro-robot"
+version = "0.1.0"
+description = "VLM-orchestrated manipulation for the DROID Franka setup"
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "google-genai==1.19.0",
+    "openai==1.99.5",
+    "pyyaml==6.0.3",
+    "numpy==1.26.4",
+    "opencv-contrib-python==4.6.0.66",
+    "pillow==10.2.0",
+    "requests==2.32.4",
+    "pydantic==2.11.7",
+    "matplotlib==3.9.4",
+    "gevent==25.5.1",
+    "gym==0.26.2",
+    "zerorpc==0.6.3",
+    "h5py==3.14.0",
+    "scipy==1.13.1",
+    "imageio==2.37.0",
+    "imageio-ffmpeg==0.6.0",
+]
+# pyzed comes with the ZED SDK (docs/SETUP_WORKSTATION.md).
+
+[tool.setuptools.packages.find]
+include = ["maestro*", "droid*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+maestro = ["prompts/*.txt"]
+
+# Run the loop with:  python -m maestro.runner -i "your task"

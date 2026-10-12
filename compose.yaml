@@ -1,0 +1,38 @@
+# Maestro's GPU services. Build and start all four on one machine:
+#     docker compose up -d --build
+# or only some of them on each machine, for example:
+#     docker compose up -d --build foundation_stereo graspgen
+# Then point config/maestro.yaml -> services at the machines that run them. The services have
+# no authentication; publish their ports only on a trusted network.
+
+x-gpu: &gpu
+  restart: unless-stopped
+  deploy:
+    resources:
+      reservations:
+        devices: [{driver: nvidia, count: all, capabilities: [gpu]}]
+
+services:
+  foundation_stereo:
+    <<: *gpu
+    build: {context: ., dockerfile: servers/foundationstereo_server/Dockerfile}
+    image: maestro/foundation-stereo
+    ports: ["5005:5005"]
+
+  groundedsam:
+    <<: *gpu
+    build: {context: ., dockerfile: servers/groundedsam_server/Dockerfile}
+    image: maestro/groundedsam
+    ports: ["8005:8005"]
+
+  graspgen:
+    <<: *gpu
+    build: {context: ., dockerfile: servers/graspgen_server/Dockerfile}
+    image: maestro/graspgen
+    ports: ["8006:8006", "7000:7000"]   # API, meshcat viewer
+
+  curobo:
+    <<: *gpu
+    build: {context: ., dockerfile: servers/curobo_server/Dockerfile}
+    image: maestro/curobo
+    ports: ["8004:8004"]

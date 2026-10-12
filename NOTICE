@@ -1,0 +1,31 @@
+Maestro
+Copyright (c) 2026 The MAESTRO Authors. Maestro's own code is MIT licensed; see LICENSE.
+
+Maestro uses the following open-source projects. Each keeps its own license; see the linked
+repositories for the full terms.
+
+Included in this repository
+- DROID robot platform code (a subset, adapted, under droid/)
+    https://github.com/droid-dataset/droid
+- maestro/chat.py is adapted from the chats module of Google's google-genai SDK
+    https://github.com/googleapis/python-genai (Apache License 2.0)
+- servers/curobo_server/curobo_overlay/ adds a planning class and a Franka + Robotiq 2F-85
+    robot model to cuRobo
+
+Downloaded when the service images are built (not included here)
+- cuRobo, NVIDIA License (non-commercial use only at the pinned commit)
+    https://github.com/NVlabs/curobo
+- nvblox, Apache License 2.0
+    https://github.com/valtsblukis/nvblox
+- nvblox_torch, NVIDIA License (non-commercial use only)
+    https://github.com/NVlabs/nvblox_torch
+- GraspGen code and model weights, NVIDIA License (non-commercial use only)
+    https://github.com/NVlabs/GraspGen
+- FoundationStereo code and model weights, NVIDIA License (non-commercial use only)
+    https://github.com/NVlabs/FoundationStereo
+- Grounded-Segment-Anything, GroundingDINO and Segment Anything, Apache License 2.0
+    https://github.com/IDEA-Research/Grounded-Segment-Anything
+    https://github.com/IDEA-Research/GroundingDINO
+    https://github.com/facebookresearch/segment-anything
+- BERT (bert-base-uncased), Apache License 2.0
+    https://huggingface.co/bert-base-uncased

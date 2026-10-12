@@ -1,0 +1,34 @@
+# Secrets and local config
+.env
+config/maestro.yaml
+
+# Robot/camera-specific data (each robot calibrates its own; never commit)
+droid/calibration/calibration_info*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# Runtime data
+runs/
+*.log
+nohup.out
+
+# Model weights and large artifacts
+*.pth
+*.pt
+*.ckpt
+*.svo
+*.svo2
+*.mp4
+*.ply
+*.npy
+
+# ZED Python wheel downloaded during install
+pyzed-*.whl

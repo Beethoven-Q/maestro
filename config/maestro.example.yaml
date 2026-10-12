@@ -1,0 +1,43 @@
+# Maestro configuration — copy to config/maestro.yaml and edit.
+
+vlm:                          # the planner, object pointing and part-point selection
+  provider: gemini            # gemini or astra; keys GEMINI_KEY / OPENAI_API_KEY come from .env
+  gemini:                     # Gemini plans and points; OpenAI o3 selects part points
+    planner: gemini-2.5-pro
+    temperature: 0.1
+    pointing: gemini-3.1-flash-image-preview
+    part_selection: o3-2025-04-16
+    api_version: v1alpha
+  astra:                      # GPT-6 Astra does all three
+    model: gpt-6-astra
+    reasoning_effort: medium  # low, medium, high, xhigh or max
+
+services:                     # GPU services from compose.yaml; each can run on any machine
+  foundation_stereo:          # stereo depth
+    host: localhost
+    port: 5005
+  groundedsam:                # open-vocabulary segmentation
+    host: localhost
+    port: 8005
+  graspgen:                   # grasp candidates; 3D viewer at http://<host>:7000/static/
+    host: localhost
+    port: 8006
+  curobo:                     # collision-free motion and grasp planning
+    host: localhost
+    port: 8004
+
+paths:
+  data_dir: ${MAESTRO_HOME}/runs        # trial logs, videos and perception data
+
+robot:
+  model: fr3                  # 'fr3' or 'panda'
+  use_motionplanner: true     # true: plan collision-free moves with cuRobo; false: move straight to the pose
+  nuc_ip: 172.16.0.4          # computer running the DROID robot server (example address; use yours)
+  robot_ip: 172.16.0.2        # Franka controller (example address)
+  laptop_ip: 172.16.0.1       # this workstation on the robot network (example address)
+  serial_number: ""           # optional; recorded in trajectory metadata
+
+cameras:                      # ZED serial numbers, as printed on the camera or shown by ZED_Explorer
+  hand_camera_id:             # wrist camera (required), e.g. "12345678"
+  varied_camera_1_id:         # external camera 1
+  varied_camera_2_id:         # external camera 2 (the trial video is recorded from it)

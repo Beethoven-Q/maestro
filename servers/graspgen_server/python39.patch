@@ -1,0 +1,12 @@
+diff --git a/grasp_gen/grasp_server.py b/grasp_gen/grasp_server.py
+--- a/grasp_gen/grasp_server.py
++++ b/grasp_gen/grasp_server.py
+@@ -89,7 +89,7 @@ class GraspGenSampler:
+ 
+     @staticmethod
+     def run_inference(
+-        object_pc: np.ndarray | torch.Tensor,
++        object_pc,
+         grasp_sampler: "GraspGenSampler",
+         grasp_threshold: float = -1.0,
+         num_grasps: int = 200,
